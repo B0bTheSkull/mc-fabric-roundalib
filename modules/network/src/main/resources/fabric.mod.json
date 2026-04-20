@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "roundalib-network",
+  "version": "${version}",
+  "name": "RoundaLib Network",
+  "description": "Network module for RoundaLib.",
+  "authors": [
+    "Roundaround"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~26.1",
+    "java": ">=25"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [ "library" ]
+    }
+  }
+}

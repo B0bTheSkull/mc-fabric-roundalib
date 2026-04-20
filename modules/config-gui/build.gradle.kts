@@ -1,7 +1,7 @@
 plugins {
   id("java")
   id("maven-publish")
-  id("net.fabricmc.fabric-loom") version "1.15-SNAPSHOT"
+  id("net.fabricmc.fabric-loom") version "1.16-SNAPSHOT"
 }
 
 version = providers.gradleProperty("mod_version").get()
@@ -12,6 +12,8 @@ base {
 }
 
 repositories {
+  mavenCentral()
+  maven("https://maven.fabricmc.net/")
   mavenLocal()
 }
 
@@ -19,28 +21,33 @@ dependencies {
   minecraft("com.mojang:minecraft:${providers.gradleProperty("minecraft_version").get()}")
   implementation("net.fabricmc:fabric-loader:${providers.gradleProperty("loader_version").get()}")
 
-  api("me.roundaround:roundalib-gradle:1.1.0:api")
-
   implementation(project(":config"))
   implementation(project(":gui"))
   implementation(project(":observables"))
 }
 
 tasks.withType<JavaCompile>().configureEach {
+  options.encoding = "UTF-8"
   options.release = 25
 }
 
 java {
   withSourcesJar()
-
   sourceCompatibility = JavaVersion.VERSION_25
   targetCompatibility = JavaVersion.VERSION_25
 }
 
+tasks.processResources {
+  inputs.property("version", version)
+  filteringCharset = "UTF-8"
+  filesMatching("fabric.mod.json") {
+    expand("version" to version)
+  }
+}
+
 tasks.jar {
   inputs.property("archivesName", base.archivesName)
-
-  from("LICENSE") {
+  from("${rootDir}/LICENSE") {
     rename { "${it}_${base.archivesName.get()}" }
   }
 }
@@ -50,17 +57,6 @@ publishing {
     register<MavenPublication>("mavenJava") {
       artifactId = base.archivesName.get()
       from(components["java"])
-    }
-  }
-
-  repositories {
-    maven {
-      name = "RoundaroundMaven"
-      url = uri("https://maven.rnda.dev/releases/")
-      credentials(PasswordCredentials::class) {
-        username = property("selfHostedMavenUser").toString()
-        password = property("selfHostedMavenPass").toString()
-      }
     }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "roundalib-config-gui",
+  "version": "${version}",
+  "name": "RoundaLib Config GUI",
+  "description": "Config GUI module for RoundaLib.",
+  "authors": [
+    "Roundaround"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~26.1",
+    "java": ">=25",
+    "roundalib-config": "*",
+    "roundalib-gui": "*",
+    "roundalib-observables": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [ "library" ]
+    }
+  }
+}
