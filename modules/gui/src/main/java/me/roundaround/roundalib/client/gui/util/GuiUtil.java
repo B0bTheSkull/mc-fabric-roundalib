@@ -100,11 +100,11 @@ public final class GuiUtil {
   }
 
   public static Screen getCurrentScreen(Minecraft client) {
-    return client.screen;
+    return client.gui.screen();
   }
 
   public static void setScreen(Screen screen) {
-    getClient().setScreen(screen);
+    getClient().setScreenAndShow(screen);
   }
 
   public static void drawText(

@@ -176,6 +176,11 @@ public abstract class FlowListWidget<E extends FlowListWidget.Entry> extends Abs
   }
 
   @Override
+  public void removeChildren() {
+    this.clearEntries();
+  }
+
+  @Override
   public void arrangeElements() {
     if (this.parentLayout != null) {
       this.setRectangle(
@@ -774,6 +779,11 @@ public abstract class FlowListWidget<E extends FlowListWidget.Entry> extends Abs
     @Override
     public void visitChildren(Consumer<LayoutElement> consumer) {
       this.layouts.forEach((ref) -> consumer.accept(ref.getLayout()));
+    }
+
+    @Override
+    public void removeChildren() {
+      this.clearChildren();
     }
 
     @Override

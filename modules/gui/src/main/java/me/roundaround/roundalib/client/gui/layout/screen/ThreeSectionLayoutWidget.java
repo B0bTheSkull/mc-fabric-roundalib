@@ -133,6 +133,11 @@ public class ThreeSectionLayoutWidget extends SizableLayoutWidget {
     this.footer.clearChildren();
   }
 
+  @Override
+  public void removeChildren() {
+    this.clearChildren();
+  }
+
   public LabelWidget addHeader(Font textRenderer, Component title) {
     return this.header.add(LabelWidget.builder(textRenderer, title)
         .alignTextCenterX()

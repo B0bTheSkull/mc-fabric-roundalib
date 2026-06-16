@@ -21,11 +21,11 @@ public class BaseScreen extends Screen {
 
   @Override
   public void onClose() {
-    this.minecraft.setScreen(this.parent.get());
+    this.minecraft.setScreenAndShow(this.parent.get());
   }
 
   protected void navigateTo(Screen screen) {
-    this.minecraft.setScreen(screen);
+    this.minecraft.setScreenAndShow(screen);
   }
 
   protected void done(Button button) {

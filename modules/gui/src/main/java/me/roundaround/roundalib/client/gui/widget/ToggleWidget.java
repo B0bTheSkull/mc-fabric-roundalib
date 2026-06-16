@@ -179,6 +179,11 @@ public class ToggleWidget extends AbstractButton implements Layout {
   }
 
   @Override
+  public void removeChildren() {
+    // ToggleWidget owns a fixed internal layout, not removable children.
+  }
+
+  @Override
   public void arrangeElements() {
     if (this.valueTextMapper != null && this.valueLabel != null) {
       this.valueLabel.setWidth(this.getValueWidth());

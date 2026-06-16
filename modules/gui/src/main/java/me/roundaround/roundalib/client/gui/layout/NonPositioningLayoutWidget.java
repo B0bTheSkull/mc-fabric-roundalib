@@ -90,6 +90,11 @@ public class NonPositioningLayoutWidget extends SizableLayoutWidget {
     this.cells.clear();
   }
 
+  @Override
+  public void removeChildren() {
+    this.clearChildren();
+  }
+
   public List<LayoutElement> getChildren() {
     return this.cells.stream().map((cell) -> (LayoutElement) cell.getWidget()).toList();
   }

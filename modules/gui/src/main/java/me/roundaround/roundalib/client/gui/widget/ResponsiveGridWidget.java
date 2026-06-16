@@ -241,6 +241,11 @@ public class ResponsiveGridWidget extends AbstractContainerWidget implements Lay
     this.cells.clear();
   }
 
+  @Override
+  public void removeChildren() {
+    this.clear();
+  }
+
   @Environment(EnvType.CLIENT)
   public enum Axis {
     HORIZONTAL, VERTICAL;

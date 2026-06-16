@@ -63,6 +63,11 @@ public abstract class SizableLayoutWidget implements Layout {
     return this.height;
   }
 
+  @Override
+  public void removeChildren() {
+    // No children to remove by default; subclasses that track children override this.
+  }
+
   public void setDimensions(int width, int height) {
     this.setWidth(width);
     this.setHeight(height);

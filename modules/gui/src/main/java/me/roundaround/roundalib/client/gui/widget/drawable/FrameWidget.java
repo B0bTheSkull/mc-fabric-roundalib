@@ -99,6 +99,13 @@ public class FrameWidget extends DrawableWidget implements Layout {
   }
 
   @Override
+  public void removeChildren() {
+    // FrameWidget only references external widgets/slots; it owns no children.
+    this.refSlot = null;
+    this.refWidget = null;
+  }
+
+  @Override
   public void arrangeElements() {
     if (this.refSlot != null) {
       this.setBounds(IntRect.fromSlot(this.refSlot));

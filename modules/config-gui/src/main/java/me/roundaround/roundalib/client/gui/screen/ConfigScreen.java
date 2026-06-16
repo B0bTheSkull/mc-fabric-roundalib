@@ -98,7 +98,7 @@ public class ConfigScreen extends Screen {
 
   @Override
   public void onClose() {
-    Objects.requireNonNull(this.minecraft).setScreen(this.parent);
+    Objects.requireNonNull(this.minecraft).setScreenAndShow(this.parent);
   }
 
   @Override

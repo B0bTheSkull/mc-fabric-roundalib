@@ -37,7 +37,7 @@ public class SubScreenControl<D, O extends ConfigOption<D>> extends Control<D, O
     this.subScreenFactory = subScreenFactory;
 
     this.button = this.add(Button.builder(this.messageFactory.apply(this.getOption()), (button) -> {
-      if (!(client.screen instanceof ConfigScreen screen)) {
+      if (!(client.gui.screen() instanceof ConfigScreen screen)) {
         Panic.panic(new IllegalStatePanic("Sub-screens can only be created from ConfigScreens."), option.getModId());
         return;
       }

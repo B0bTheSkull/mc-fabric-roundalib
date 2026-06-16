@@ -79,7 +79,7 @@ public abstract class ConfigOptionSubScreen<D, O extends ConfigOption<D>> extend
     this.subscriptions.forEach(Subscription::close);
     this.subscriptions.clear();
 
-    Objects.requireNonNull(this.minecraft).setScreen(this.parent.copy());
+    Objects.requireNonNull(this.minecraft).setScreenAndShow(this.parent.copy());
   }
 
   @Override
